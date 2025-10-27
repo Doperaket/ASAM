@@ -1,0 +1,33 @@
+{
+  "name": "steam-confirmations-bridge",
+  "version": "1.0.0",
+  "description": "Node.js мост для работы с подтверждениями Steam через Python",
+  "main": "confirmations_bridge.js",
+  "scripts": {
+    "start": "node confirmations_bridge.js",
+    "dev": "nodemon confirmations_bridge.js"
+  },
+  "keywords": [
+    "steam",
+    "steam-api",
+    "confirmations",
+    "trade-confirmations",
+    "steam-guard"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "request": "^2.88.2",
+    "steam-totp": "^2.1.1",
+    "steam-tradeoffer-manager": "^2.12.2",
+    "steamcommunity": "^3.49.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
