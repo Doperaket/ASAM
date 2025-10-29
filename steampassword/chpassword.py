@@ -195,7 +195,7 @@ class SteamPasswordChange:
         )
         if response.get('errorMsg'):
             raise ErrorSteamPasswordChange(response['errorMsg'])
-        return RSAKey.parse_obj(response)
+        return RSAKey.model_validate(response)
 
     def _encrypt_password(self, password: str, mod: str, exp: str) -> str:
         publickey_exp = int(exp, 16)

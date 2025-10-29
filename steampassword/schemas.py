@@ -4,6 +4,8 @@ import pydantic
 
 
 class PasswordChangeParams(pydantic.BaseModel):
+    model_config = pydantic.ConfigDict(arbitrary_types_allowed=True)
+    
     s: int
     account: int
     reset: int
@@ -12,13 +14,12 @@ class PasswordChangeParams(pydantic.BaseModel):
 
 
 class RSAKey(pydantic.BaseModel):
-    mod: str
-    exp: str
+    model_config = pydantic.ConfigDict(
+        arbitrary_types_allowed=True,
+        populate_by_name=True
+    )
+    
+    mod: str = pydantic.Field(alias='publickey_mod')
+    exp: str = pydantic.Field(alias='publickey_exp')
     timestamp: int
     token_gid: Optional[str] = None
-
-    class Config:
-        fields = {
-            'mod': 'publickey_mod',
-            'exp': 'publickey_exp',
-        }
