@@ -1,6 +1,6 @@
 
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field
 from dataclasses import dataclass
 
 try:
@@ -57,8 +57,6 @@ class TradeOfferState(IntEnum):
 
 
 class TradeItem(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     appid: int
     contextid: str
     assetid: str
@@ -70,8 +68,6 @@ class TradeItem(BaseModel):
 
 
 class TradeOffer(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     tradeofferid: str
     accountid_other: int
     message: Optional[str] = None
@@ -141,8 +137,6 @@ class TradeOffer(BaseModel):
 
 
 class ItemDescription(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     appid: int
     classid: str
     instanceid: str
@@ -167,8 +161,6 @@ class ItemDescription(BaseModel):
 
 
 class TradeOffersResponse(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     trade_offers_received: Optional[List[TradeOffer]] = Field(default_factory=list)
     trade_offers_sent: Optional[List[TradeOffer]] = Field(default_factory=list)
     descriptions: Optional[List[ItemDescription]] = Field(default_factory=list)
@@ -205,8 +197,6 @@ class SteamApiResponse:
 
 
 class TradeOffersSummaryResponse(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     pending_received_count: int = 0
     new_received_count: int = 0
     updated_received_count: int = 0
@@ -220,6 +210,4 @@ class TradeOffersSummaryResponse(BaseModel):
 
 
 class SteamApiSummaryResponse(BaseModel):
-    model_config = ConfigDict(arbitrary_types_allowed=True)
-    
     response: TradeOffersSummaryResponse 
